@@ -32,7 +32,7 @@ van en el servidor de la obra (en Proxmox, adentro del CT: `pct enter <CTID>`).
   instalador solo usa el Node de la distribución.
 - Salida a internet (GitHub, Docker, los repositorios de la distribución).
 - Un **token de GitHub** *fine-grained*, de los dos repos
-  `walc72/sentrylink-local-v2` y `walc72/puente-modbus-mqtt`, con:
+  `hecian-lc/sentrylink-local-v2` y `hecian-lc/puente-modbus-mqtt`, con:
   - **Contents:** Read-only (para bajar el código);
   - **Administration:** Read and write (para cargar las deploy keys);
   - vencimiento de **1 día** (Administration también deja borrar el repo).
@@ -64,7 +64,7 @@ Vuelve a la sesión después de reconectar.
 ### El comando
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/walc72/sentrylink-instalar/main/instalar | sudo bash
+wget -qO- https://raw.githubusercontent.com/hecian-lc/sentrylink-instalar/main/instalar | sudo bash
 ```
 Con un usuario que tiene `sudo` (Ubuntu). Pide el token, baja el último
 release (tag `nubicom-AAAA.MM.N`) a `/root/sentrylink-instalador` y lanza el
@@ -72,7 +72,7 @@ instalador que corresponde: `instalar-proxmox.sh` en un host Proxmox,
 `instalar-servidor.sh` en un Debian o Ubuntu.
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/walc72/sentrylink-instalar/main/instalar | bash
+wget -qO- https://raw.githubusercontent.com/hecian-lc/sentrylink-instalar/main/instalar | bash
 ```
 Lo mismo, si ya sos root (un Debian mínimo no trae `sudo`).
 
@@ -85,7 +85,7 @@ Se usa `wget` y no `curl` porque un Debian mínimo no trae `curl`.
 Las opciones van después de `bash -s --`. Si ya sos root, sin el `sudo`.
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/walc72/sentrylink-instalar/main/instalar | sudo bash -s -- --respuestas /root/sentrylink-servidor.respuestas
+wget -qO- https://raw.githubusercontent.com/hecian-lc/sentrylink-instalar/main/instalar | sudo bash -s -- --respuestas /root/sentrylink-servidor.respuestas
 ```
 Repite la instalación **sin las preguntas de la obra**, con las respuestas de
 la corrida anterior (el token y la actualización del sistema se siguen
@@ -94,7 +94,7 @@ quedó completo se verifica y se saltea, lo que quedó a medias se rehace. Todo
 lo que no sea `--ref` pasa tal cual al instalador.
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/walc72/sentrylink-instalar/main/instalar | sudo bash -s -- --ref <TAG_O_RAMA>
+wget -qO- https://raw.githubusercontent.com/hecian-lc/sentrylink-instalar/main/instalar | sudo bash -s -- --ref <TAG_O_RAMA>
 ```
 Instala otro release o una rama (para probar algo que todavía no tiene tag).
 **Nunca una rama en una obra:** solo tags.

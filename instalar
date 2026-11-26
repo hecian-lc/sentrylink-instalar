@@ -2,10 +2,10 @@
 # =============================================================================
 # SentryLink Local v2 — arranque del instalador, en una línea
 # =============================================================================
-#   wget -qO- https://raw.githubusercontent.com/walc72/sentrylink-instalar/main/instalar | sudo bash
+#   wget -qO- https://raw.githubusercontent.com/hecian-lc/sentrylink-instalar/main/instalar | sudo bash
 #
 # Este archivo es PÚBLICO a propósito: es lo único que se baja sin token. El
-# instalador de verdad vive en walc72/sentrylink-local-v2, que es privado.
+# instalador de verdad vive en hecian-lc/sentrylink-local-v2, que es privado.
 # Hace tres cosas:
 #   1. pide un token de GitHub, sin eco, y no lo guarda en ningún lado;
 #   2. clona sentrylink-local-v2 en /root/sentrylink-instalador, en el último
@@ -24,7 +24,7 @@
 set -euo pipefail
 
 main() {
-  local repo="walc72/sentrylink-local-v2" dir="/root/sentrylink-instalador" ref="" t d head
+  local repo="hecian-lc/sentrylink-local-v2" dir="/root/sentrylink-instalador" ref="" t d head
   local -a pasar=()
   while [ $# -gt 0 ]; do
     case "$1" in
@@ -44,7 +44,7 @@ main() {
   # El token: lo lee de la terminal aunque este script llegue por un pipe.
   { set +x; } 2>/dev/null
   { : </dev/tty; } 2>/dev/null || die "hace falta una terminal (el token se tipea)"
-  echo "Token de GitHub, fine-grained, de los DOS repos ($repo y walc72/puente-modbus-mqtt),"
+  echo "Token de GitHub, fine-grained, de los DOS repos ($repo y hecian-lc/puente-modbus-mqtt),"
   echo "vencimiento de 1 día, permisos Contents: read y Administration: write"
   echo "(Administration: write carga las deploy keys; también deja borrar el repo: que venza)."
   echo "No se guarda."
