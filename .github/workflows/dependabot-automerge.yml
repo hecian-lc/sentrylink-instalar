@@ -1,0 +1,14 @@
+# Fusiona los PR de Dependabot de parches y menores cuando la CI pasó.
+name: Dependabot auto-merge
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+jobs:
+  fusionar:
+    uses: hecian-lc/.github/.github/workflows/dependabot-automerge.yml@v1
+    permissions:
+      contents: write
+      pull-requests: write

@@ -1,0 +1,34 @@
+# CI con los workflows reutilizables de hecian-lc/.github.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # El instalador se baja y se corre con bash: que al menos parsee y que
+  # shellcheck no encuentre problemas.
+  instalar:
+    name: instalar (bash -n y shellcheck)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Sintaxis (bash -n)
+        run: bash -n instalar
+      - name: shellcheck
+        run: shellcheck --shell=bash instalar
+
+  seguridad:
+    uses: hecian-lc/.github/.github/workflows/seguridad.yml@v1
+
+  # Avisa lo que falta para la marca (LICENSE, package.json, firma). Pasar a
+  # estricto: true cuando el repo esté en la marca.
+  marca:
+    uses: hecian-lc/.github/.github/workflows/marca.yml@v1
