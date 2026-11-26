@@ -1,0 +1,14 @@
+# Dependencias que Dependabot mantiene al día. Agrupa parches y menores en un
+# PR por ecosistema (los fusiona dependabot-automerge.yml si la CI pasa).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/Asuncion
+    groups:
+      actions:
+        update-types: [minor, patch]
