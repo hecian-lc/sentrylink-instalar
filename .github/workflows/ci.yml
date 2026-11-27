@@ -28,7 +28,8 @@ jobs:
   seguridad:
     uses: hecian-lc/.github/.github/workflows/seguridad.yml@v1
 
-  # Avisa lo que falta para la marca (LICENSE, package.json, firma). Pasar a
-  # estricto: true cuando el repo esté en la marca.
+  # Control de marca y licencia: falla si falta algo del estándar.
   marca:
     uses: hecian-lc/.github/.github/workflows/marca.yml@v1
+    with:
+      estricto: true
